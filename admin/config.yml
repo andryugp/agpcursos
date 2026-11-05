@@ -2,7 +2,7 @@ backend:
   name: github
   repo: andryugp/agpcursos
   branch: master
-  token: "__GITHUB_PAT_TOKEN__"
+  token: "__AGPCURSOS_PAT__"
 
 media_folder: "images"
 public_folder: "/images"

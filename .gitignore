@@ -29,6 +29,9 @@ Thumbs.db
 # (tokens are injected at build time via GitHub Actions)
 admin/config.local.yml
 
+# Decap CMS injected token (committed token value)
+admin/.token-injected
+
 # Cache
 .cache/
 /.cache/

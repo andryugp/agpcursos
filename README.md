@@ -31,10 +31,13 @@
 - **Hospedaje**: GitHub Pages (gratis)
 - **Base de datos**: JSON estático (`data/cursos.json`)
 - **Reproductor**: Plyr.io con fallback a Invidious (yewtu.be)
+- **CMS**: Decap CMS (interfaz de administración)
 
 ## 🚀 Demo
 
 👉 **[Ver plataforma](https://andryugp.github.io/agpcursos)**
+
+📋 **[Panel de Administración](https://andryugp.github.io/agpcursos/admin/)** (requiere login de GitHub)
 
 ## 📂 Estructura
 
@@ -45,8 +48,20 @@ CURSOS/
 ├── curso.html          # Vista individual del curso
 ├── data/
 │   └── cursos.json     # Base de datos de cursos
+├── admin/
+│   ├── index.html      # Interfaz de Decap CMS
+│   └── config.yml      # Configuración del CMS
 └── README.md
 ```
+
+## ⚙️ Configuración de GitHub Pages
+
+1. En el repositorio, ve a **Settings > Pages**
+2. En **Source**, selecciona la rama `master` y carpeta `/ (root)`
+3. Guarda los cambios
+4. El sitio estará disponible en `https://andryugp.github.io/agpcursos/`
+
+> **Nota**: La primera carga puede tardar unos minutos en procesarse.
 
 ## 🤝 Contribuir
 

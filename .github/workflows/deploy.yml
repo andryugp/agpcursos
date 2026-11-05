@@ -10,28 +10,39 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  secrets: read
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{steps.deployment.outputs.page_url}}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Inject GitHub PAT token for Decap CMS
+        env:
+          GITHUB_PAT_TOKEN: ${{ secrets.GITHUB_PAT_TOKEN }}
+        run: sed -i "s/__GITHUB_PAT_TOKEN__/$GITHUB_PAT_TOKEN/g" admin/config.yml
 
       - name: Setup Pages
+        id: setup
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+          # Include all static files including admin/, data/, and root HTML files
+          # This ensures Decap CMS admin interface and data files are deployed
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -15,157 +15,18 @@
         max-width: 1200px;
         margin: 0 auto;
       }
-      .login-container {
-        text-align: center;
-        padding: 40px;
+      #cms {
         background: white;
+        min-height: 80vh;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      }
-      .btn-github {
-        display: inline-block;
-        padding: 12px 24px;
-        background-color: #24292e;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-        transition: background-color 0.2s;
-      }
-      .btn-github:hover {
-        background-color: #353b42;
       }
     </style>
   </head>
   <body>
-    <div class="cms-app">
-      <div id="login-container" class="login-container">
-        <h1>Panel de Administración - AGPCursos</h1>
-        <p>Presionando el botón de abajo se iniciará sesión con tu cuenta de GitHub para acceder al panel de administración.</p>
-        <a id="github-login-btn" class="btn-github" href="#">
-          Iniciar sesión con GitHub
-        </a>
-      </div>
-    </div>
+    <div id="cms"></div>
     
-    <!-- Include the script that builds the page and powers Decap CMS -->
+    <!-- Include the script that powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    
-    <script>
-      // Configuración para Decap CMS con GitHub OAuth
-      // Esta es la URL del repositorio configurada en la OAuth App
-      const repo = "andryugp/agpcursos";
-      const repoOwner = "andryugp";
-      const branch = "master";
-      const clientId = "Ov23liIGvELSXRwjZvfn";
-      
-      // URL del admin configurada en la OAuth App
-      const adminPath = "/agpcursos/admin/";
-      
-      // Function to initialize CMS
-      CMS.init({
-        config: {
-          backend: {
-            name: "github",
-            repo: repo,
-            branch: branch,
-            client_id: clientId
-          },
-          media_folder: "images",
-          public_folder: "/images",
-          collections: [
-            {
-              name: "cursos",
-              label: "Cursos",
-              folder: "data",
-              create: false,
-              slug: "",
-              file: "data/cursos.json",
-              fields: [
-                {
-                  label: "Cursos",
-                  name: "cursos",
-                  widget: "list",
-                  fields: [
-                    { label: "ID", name: "id", widget: "string", hint: "curso-001, curso-002, etc." },
-                    { label: "Título", name: "titulo", widget: "string" },
-                    { label: "Descripción", name: "descripcion", widget: "text", required: false },
-                    {
-                      label: "Categoría",
-                      name: "categoria",
-                      widget: "select",
-                      options: ["Desarrollo", "Negocios", "Finanzas", "Informática", "IA", "Productividad", "Desarrollo Personal", "Diseño", "Marketing", "Salud", "Música", "Enseñanza"]
-                    },
-                    { label: "Subcategoría", name: "subcategoria", widget: "string", required: false },
-                    {
-                      label: "Nivel",
-                      name: "nivel",
-                      widget: "select",
-                      options: ["principiante", "intermedio", "avanzado"]
-                    },
-                    { label: "Duración", name: "duracion", widget: "string", hint: "40 horas" },
-                    { label: "URL del Video (YouTube)", name: "video_url", widget: "string" },
-                    { label: "URL de Fallback (Invidious)", name: "video_fallback", widget: "string", hint: "https://yewtu.be/watch?v=..." },
-                    { label: "Módulo", name: "modulo", widget: "string" },
-                    { label: "Fecha de Publicación", name: "fecha_publicacion", widget: "date", format: "YYYY-MM-DD", required: false },
-                    { label: "Instructor", name: "instructor", widget: "string", required: false }
-                  ]
-                },
-                {
-                  label: "Categorías",
-                  name: "categorias",
-                  widget: "list",
-                  fields: [
-                    { label: "Nombre", name: "nombre", widget: "string" }
-                  ]
-                },
-                {
-                  label: "Filtros",
-                  name: "filtros",
-                  widget: "object",
-                  fields: [
-                    {
-                      label: "Niveles",
-                      name: "niveles",
-                      widget: "list",
-                      fields: [
-                        { label: "Nivel", name: "", widget: "string" }
-                      ]
-                    },
-                    {
-                      label: "Módulos",
-                      name: "modulos",
-                      widget: "list",
-                      fields: [
-                        { label: "Módulo", name: "", widget: "string" }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      });
-      
-      // Manejar el botón de login
-      const loginBtn = document.getElementById('github-login-btn');
-      
-      // Cuando Decap CMS se inicializa, el botón de login debe abrir la ventana de autenticación
-      loginBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Generar la URL de autorización de GitHub OAuth
-        const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(window.location.origin + adminPath)}&scope=repo`;
-        
-        // Abrir ventana de autenticación
-        const width = 500;
-        const height = 600;
-        const left = (window.innerWidth - width) / 2;
-        const top = (window.innerHeight - height) / 2;
-        
-        window.open(authUrl, 'github_oauth', `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${width}, height=${height}, top=${top}, left=${left}`);
-      });
-    </script>
   </body>
 </html>

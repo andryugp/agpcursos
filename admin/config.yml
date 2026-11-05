@@ -2,23 +2,14 @@ backend:
   name: github
   repo: andryugp/agpcursos
   branch: master
-  client_id: Ov23liIGvELSXRwjZvfn
-  
-  # Instrucciones de OAuth para GitHub
-  # 1. Visitar: https://github.com/settings/developers
-  # 2. Seleccionar la OAuth App configurada con Client ID: Ov23liIGvELSXRwjZvfn
-  # 3. Configurar Callback URL: https://andryugp.github.io/agpcursos/admin/
-  # 4. Si es necesario, agregar client_secret debajo de client_id
+  token: "__GITHUB_PAT_TOKEN__"
 
 media_folder: "images"
 public_folder: "/images"
 
 # Configuración específica para GitHub Pages
-config:
-  media_folder: "images"
-  public_folder: "/images"
+publish_mode: none
 
-# Configuración del CMS
 collections:
   - name: "cursos"
     label: "Cursos y Categorías"
@@ -53,13 +44,13 @@ collections:
           - {label: "Módulo", name: "modulo", widget: "string"}
           - {label: "Fecha de Publicación", name: "fecha_publicacion", widget: "date", format: "YYYY-MM-DD", required: false}
           - {label: "Instructor", name: "instructor", widget: "string", required: false}
-    
+      
       - label: "Categorías"
         name: "categorias"
         widget: "list"
         fields:
           - {label: "Nombre", name: "nombre", widget: "string"}
-    
+      
       - label: "Filtros"
         name: "filtros"
         widget: "object"

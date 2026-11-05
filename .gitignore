@@ -1,21 +1,34 @@
-# Archivos de sistema
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Build
+# Dependencies
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Builds
 dist/
 build/
+public/
 
-# Logs
-*.log
-npm-debug.log*
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Environment
 .env
 .env.local
 .env.*.local
+
+# Secrets - ignore config files with tokens
+# (tokens are injected at build time via GitHub Actions)
+admin/config.local.yml
+
+# Cache
+.cache/
+/.cache/

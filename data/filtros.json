@@ -1,4 +1,16 @@
 [
-  {"niveles": ["principiante", "intermedio", "avanzado"]},
-  {"modulos": ["introduccion", "fundamentos", "avanzado", "proyecto", "ejercicios"]}
+  {
+    "niveles": [
+      {"nivel": "principiante"},
+      {"nivel": "intermedio"},
+      {"nivel": "avanzado"}
+    ],
+    "modulos": [
+      {"modulo": "introduccion"},
+      {"modulo": "fundamentos"},
+      {"modulo": "avanzado"},
+      {"modulo": "proyecto"},
+      {"modulo": "ejercicios"}
+    ]
+  }
 ]

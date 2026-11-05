@@ -2,18 +2,13 @@ backend:
   name: github
   repo: andryugp/agpcursos
   branch: master
-  # Token será inyectado automáticamente por GitHub Actions
-  # usando GitHub App credentials
-  token: "${GITHUB_TOKEN}"
 
 media_folder: "images"
 public_folder: "/images"
 
-# Publicación directa (sin editorial workflow)
-# Si necesitas workflow editorial, usa: publish_mode: editorial_workflow
-
 collections:
   - name: "cursos"
+    title: "Cursos"
     label: "Cursos"
     folder: "data"
     create: false
@@ -25,6 +20,7 @@ collections:
         widget: "list"
         fields:
           - {label: "ID", name: "id", widget: "string", hint: "curso-001, curso-002, etc."}
+          - {label: "Título", name: "title", widget: "string", required: true}
           - {label: "Título", name: "titulo", widget: "string"}
           - {label: "Descripción", name: "descripcion", widget: "text", required: false}
           - label: "Categoría"
@@ -44,6 +40,7 @@ collections:
           - {label: "Instructor", name: "instructor", widget: "string", required: false}
 
   - name: "categorias"
+    title: "Categorías"
     label: "Categorías"
     folder: "data"
     create: false
@@ -56,3 +53,30 @@ collections:
         fields:
           - {label: "Title", name: "title", widget: "string", required: true}
           - {label: "Nombre", name: "nombre", widget: "string"}
+
+  - name: "filtros"
+    title: "Filtros"
+    label: "Filtros"
+    folder: "data"
+    create: false
+    slug: ""
+    file: "filtros.json"
+    fields:
+      - label: "Filtros"
+        name: "filtros"
+        widget: "list"
+        fields:
+          - label: "Niveles"
+            name: "niveles"
+            widget: "list"
+            fields:
+              - label: "Nivel"
+                name: "nivel"
+                widget: "string"
+          - label: "Módulos"
+            name: "modulos"
+            widget: "list"
+            fields:
+              - label: "Módulo"
+                name: "modulo"
+                widget: "string"

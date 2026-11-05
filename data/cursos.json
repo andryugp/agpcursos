@@ -1,6 +1,7 @@
 [
   {
     "id": "curso-001",
+    "title": "Python desde Cero: De Principiante a Experto",
     "titulo": "Python desde Cero: De Principiante a Experto",
     "descripcion": "Aprende Python paso a paso. Desde variables hasta frameworks avanzados de desarrollo web y ciencia de datos.",
     "categoria": "Desarrollo",
@@ -15,6 +16,7 @@
   },
   {
     "id": "curso-002",
+    "title": "Marketing Digital para Negocios Online",
     "titulo": "Marketing Digital para Negocios Online",
     "descripcion": "Domina el marketing digital: SEO, redes sociales, publicidad pagada y estrategias de crecimiento.",
     "categoria": "Marketing",
@@ -29,6 +31,7 @@
   },
   {
     "id": "curso-003",
+    "title": "Excel Avanzado: Fórmulas y Macros",
     "titulo": "Excel Avanzado: Fórmulas y Macros",
     "descripcion": "Domina Excel con funciones avanzadas, tablas dinámicas, macros y programación VBA.",
     "categoria": "Productividad",

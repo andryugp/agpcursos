@@ -1,10 +1,12 @@
-# Configuración de GitHub App para Decap CMS
+# Configuración de GitHub App para Decap CMS v3
 
-## Configuración de GitHub App
+## Requisitos Previos
 
-Decap CMS ahora utiliza **GitHub App** en lugar de Personal Access Token (PAT) para una autenticación más segura.
+Decap CMS v3 utiliza **OAuth del usuario** a través de GitHub App. NO requiere tokens de servicio ni secrets en el workflow de despliegue.
 
-### Paso 1: Crear GitHub App
+---
+
+## Paso 1: Crear GitHub App
 
 1. Ve a: **Settings** → **Developer settings** → **GitHub Apps** → **New GitHub App**
 2. Configura los siguientes campos:
@@ -16,7 +18,9 @@ Decap CMS ahora utiliza **GitHub App** en lugar de Personal Access Token (PAT) p
 | **URL** | https://andryugp.github.io/agpcursos/ |
 | **Callback URL** | https://andryugp.github.io/agpcursos/admin/ |
 
-### Paso 2: Configurar Permisos
+---
+
+## Paso 2: Configurar Permisos
 
 En la pestaña **Permissions**:
 
@@ -26,47 +30,39 @@ En la pestaña **Permissions**:
 | Metadata | Read |
 | Pages | Read and write |
 
-### Paso 3: Configurar Suscripción
+---
+
+## Paso 3: Configurar Suscripción
 
 En la pestaña **Subscribe to events** (puedes dejar todo por defecto).
 
-### Paso 4: Generar Private Key
+---
 
-1. Haz clic en **Generate a private key**
-2. Descarga el archivo `private-key.pem`
-3. **NO** compartas este archivo
+## Paso 4: Generar Private Key (Opcional)
 
-### Paso 5: Instalar el App
+> **Nota**: No es necesario para el flujo OAuth básico de Decap CMS v3. Solo necesario si planeas usar GitHub App para integraciones adicionales.
+
+---
+
+## Paso 5: Instalar el App
 
 1. Ve a **Install App**
 2. Selecciona tu cuenta/organización
-3. Suscríbe a los repositorios necesarios (selecciona solo `agpcursos`)
+3. Suscríbe al repositorio `agpcursos`
 
-### Paso 6: Agregar Secrets al Repositorio
+---
 
-Ve a **Settings** → **Secrets and variables** → **Actions** y agrega:
+## Flujo de Trabajo
 
-| Nombre del Secret | Valor |
-|-------------------|-------|
-| `APP_ID` | [Tu App ID numérico] |
-| `APP_PRIVATE_KEY` | [Contenido del archivo private-key.pem] |
-
-> **Nota**: Puedes pegar el contenido del private key directamente sin las comillas iniciales y finales.
-
-### Paso 7: Verificar Configuración
-
-El workflow `Deploy to GitHub Pages` se ejecutará automáticamente en el siguiente push, o puedes forzar un despliegue manual:
-
-1. Ve a **Actions**
-2. Selecciona el workflow "Deploy to GitHub Pages"
-3. Haz clic en **Run workflow**
-4. Ejecuta el workflow
+Decap CMS v3 usa **OAuth directo del usuario**:
+1. El usuario accede a `https://andryugp.github.io/agpcursos/admin/`
+2. Hace clic en "Login with GitHub"
+3. Se autentica directamente con GitHub
+4. No se necesitan secrets ni tokens de servicio
 
 ---
 
 ## Verificación
-
-Una vez configurado correctamente:
 
 1. Accede a: `https://andryugp.github.io/agpcursos/admin/`
 2. Deberías ver el formulario de login de GitHub
@@ -75,21 +71,27 @@ Una vez configurado correctamente:
 
 ---
 
-## ¿Qué cambios se realizaron?
+## ¿Qué se configuró?
 
-- **admin/config.yml**: Eliminado el token PAT, ahora usa variables de entorno
-- **workflow**: Usa `actions/create-github-app-token@v1` para generar tokens efímeros
-- **Seguridad**: Los tokens nunca se almacenan en el repositorio
+- **admin/config.yml**: Backend configurado para GitHub con OAuth
+- **deploy.yml**: Workflow de GitHub Actions sin tokens (correcto para Decap CMS v3)
+- **Seguridad**: Autenticación OAuth segura, sin tokens en el repositorio
 
 ---
 
 ## Solución de Problemas
 
 ### Error: "GitHub App not found"
-Verifica que `APP_ID` está correctamente configurado como número (sin comillas).
+1. Asegúrate de que el GitHub App está instalado en el repositorio `agpcursos`
+2. El App ID se muestra en la página del App (no es necesario agregarlo como secret)
 
 ### Error: "Permission denied"
-Asegúrate de que el App tiene permisos de "Read and write" para Repository contents.
+Asegúrate de que el App tiene permisos de "Read and write" para Repository contents y Pages.
 
 ### Error: "App not installed"
 Ve a la página del App y haz clic en "Install App" para el repositorio agpcursos.
+
+### Error: Página en blanco o 404
+Verifica que `admin/index.html` está en el repositorio y que el despliegue se completó:
+1. Ve a **Actions** → **Deploy to GitHub Pages**
+2. Verifica que el workflow se ejecutó correctamente

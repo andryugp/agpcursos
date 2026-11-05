@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  deploy_github_pages:
     environment:
       name: github-pages
       url: ${{steps.deployment.outputs.page_url}}
@@ -24,36 +24,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - name: Generate GitHub App token for Decap CMS
-        uses: actions/create-github-app-token@v1
-        id: app-token
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-          permission-contents: "write"
-          repositories: "agpcursos"
-          # Necesitarás crear estos secrets en Settings > Secrets and variables > Actions
-
-      - name: Inject GitHub PAT token for Decap CMS
-        env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: |
-          # El token del GitHub App ya está disponible como GITHUB_TOKEN
-          echo "GitHub App token generated successfully for Decap CMS"
 
       - name: Setup Pages
         id: setup
         uses: actions/configure-pages@v5
 
+      - name: Delete old artifacts
+        uses: actions/delete-artifact@v4
+        with:
+          cleanup-all: true
+        continue-on-error: true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-          # Include all static files including admin/, data/, and root HTML files
-          # This ensures Decap CMS admin interface and data files are deployed
 
       - name: Deploy to GitHub Pages
         id: deployment

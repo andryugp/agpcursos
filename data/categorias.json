@@ -1,14 +1,14 @@
 [
-  {"nombre": "Desarrollo"},
-  {"nombre": "Negocios"},
-  {"nombre": "Finanzas y Contabilidad"},
-  {"nombre": "Informática y Software"},
-  {"nombre": "Inteligencia artificial"},
-  {"nombre": "Productividad en la Oficina"},
-  {"nombre": "Desarrollo Personal"},
-  {"nombre": "Diseño"},
-  {"nombre": "Marketing"},
-  {"nombre": "Salud y Fitness"},
-  {"nombre": "Música"},
-  {"nombre": "Enseñanza y Académicas"}
+  {"title": "Desarrollo", "nombre": "Desarrollo"},
+  {"title": "Negocios", "nombre": "Negocios"},
+  {"title": "Finanzas y Contabilidad", "nombre": "Finanzas y Contabilidad"},
+  {"title": "Informática y Software", "nombre": "Informática y Software"},
+  {"title": "Inteligencia artificial", "nombre": "Inteligencia artificial"},
+  {"title": "Productividad en la Oficina", "nombre": "Productividad en la Oficina"},
+  {"title": "Desarrollo Personal", "nombre": "Desarrollo Personal"},
+  {"title": "Diseño", "nombre": "Diseño"},
+  {"title": "Marketing", "nombre": "Marketing"},
+  {"title": "Salud y Fitness", "nombre": "Salud y Fitness"},
+  {"title": "Música", "nombre": "Música"},
+  {"title": "Enseñanza y Académicas", "nombre": "Enseñanza y Académicas"}
 ]

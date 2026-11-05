@@ -3,7 +3,7 @@ backend:
   repo: andryugp/agpcursos
   branch: master
   # Necesario para OAuth - agrega tu client_id después de crear la OAuth App
-  client_id:YOUR_GITHUB_CLIENT_ID
+  client_id: Ov23liIGvELSXRwjZvfn
 
 media_folder: "images"
 public_folder: "/images"
@@ -11,17 +11,15 @@ public_folder: "/images"
 # Configuración del CMS
 collections:
   - name: "cursos"
-    label: "Cursos"
+    label: "Cursos y Categorías"
     folder: "data"
     create: false
     slug: ""
     
     # Archivo JSON principal
     file: "data/cursos.json"
-    label: "Cursos"
     
     # Widget para editar el contenido completo del JSON
-    # Decap CMS guardará los cambios en el campo "cursos"
     fields:
       - label: "Cursos"
         name: "cursos"
@@ -45,3 +43,24 @@ collections:
           - {label: "Módulo", name: "modulo", widget: "string"}
           - {label: "Fecha de Publicación", name: "fecha_publicacion", widget: "date", format: "YYYY-MM-DD", required: false}
           - {label: "Instructor", name: "instructor", widget: "string", required: false}
+    
+      - label: "Categorías"
+        name: "categorias"
+        widget: "list"
+        fields:
+          - {label: "Nombre", name: "nombre", widget: "string"}
+    
+      - label: "Filtros"
+        name: "filtros"
+        widget: "object"
+        fields:
+          - label: "Niveles"
+            name: "niveles"
+            widget: "list"
+            fields:
+              - {label: "Nivel", name: "", widget: "string"}
+          - label: "Módulos"
+            name: "modulos"
+            widget: "list"
+            fields:
+              - {label: "Módulo", name: "", widget: "string"}

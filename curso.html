@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGPCursos - Curso</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+  <meta name="description" content="Curso detallado sin anuncios molestos">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 sticky top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-bold">AGPCursos</h1>
+        <p class="text-sm opacity-90">Aprende sin distracciones</p>
+      </div>
+      <a href="cursos.html" class="hover:underline">Ver todos los cursos</a>
+    </div>
+  </header>
+
+  <!-- Hero con video -->
+  <section class="bg-white py-8 px-4">
+    <div class="container mx-auto">
+      <div id="curso-container" class="max-w-4xl mx-auto">
+        <!-- El contenido se carga dinámicamente aquí -->
+        <div class="text-center py-12">
+          <p class="text-gray-600">Cargando curso...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white p-6 mt-12">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 AGPCursos - Todos los derechos reservados</p>
+      <p class="text-sm opacity-70">Videos embebidos sin anuncios molestos</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+  <script>
+    // Obtener el ID del curso de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const cursoId = urlParams.get('id') || urlParams.get('curso');
+    
+    // Mapeo de ID a video YouTube (embed)
+    const videoMap = {
+      'curso-001': {
+        youtube: 'dQw4w9WgXcQ',
+        title: 'Python desde Cero'
+      },
+      'curso-002': {
+        youtube: '9bZkp7q19f0',
+        title: 'Marketing Digital'
+      },
+      'curso-003': {
+        youtube: '3JZ_D3ELwOQ',
+        title: 'Excel Avanzado'
+      }
+    };
+
+    // Cargar curso desde JSON
+    fetch('data/cursos.json')
+      .then(response => response.json())
+      .then(data => {
+        const curso = data.cursos.find(c => c.id === cursoId);
+        
+        if (!curso) {
+          document.getElementById('curso-container').innerHTML = 
+            '<p class="text-center py-12 text-red-500">Curso no encontrado</p>';
+          return;
+        }
+
+        // Crear el HTML del curso
+        const html = `
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <!-- Video Player -->
+            <div class="aspect-w-16 aspect-h-1">
+              <video id="player" playsinline controls>
+                <source src="https://www.youtube.com/embed/${curso.video_fallback.split('v=')[1]}?rel=0" type="video/youtube"></source>
+                <source src="${curso.video_url}" type="video/youtube"></source>
+                <iframe src="https://www.youtube.com/embed/${curso.video_fallback.split('v=')[1]}?rel=0&modestbranding=1&cc_load_policy=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+              </video>
+            </div>
+            
+            <!-- Información del curso -->
+            <div class="p-6">
+              <h2 class="text-3xl font-bold mb-3">${curso.titulo}</h2>
+              <p class="text-gray-600 mb-4">${curso.descripcion}</p>
+              
+              <div class="flex flex-wrap gap-4 text-sm text-gray-500 mb-6">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded">${curso.categoria}</span>
+                <span>${curso.subcategoria}</span>
+                <span>Nivel: ${curso.nivel}</span>
+                <span>Duración: ${curso.duracion}</span>
+                <span>Instructor: ${curso.instructor}</span>
+              </div>
+              
+              <button onclick="history.back()" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded transition">
+                &larr; Volver a cursos
+              </button>
+            </div>
+          </div>
+        `;
+        
+        document.getElementById('curso-container').innerHTML = html;
+
+        // Inicializar Plyr
+        const player = new Plyr('#player');
+      })
+      .catch(err => {
+        console.error('Error cargando curso:', err);
+        document.getElementById('curso-container').innerHTML = 
+          '<p class="text-center py-12 text-red-500">Error al cargar el curso</p>';
+      });
+  </script>
+
+  <style>
+    /* Mantener proporciones para el reproductor */
+    .aspect-w-16 {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
+    .aspect-h-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    #player iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</body>
+</html>

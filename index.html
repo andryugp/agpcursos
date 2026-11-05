@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGPCursos - Aprende sin anuncios</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+  <meta name="description" content="Cursos online sin anuncios molestos. Aprende programación, marketing, diseño y más.">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 sticky top-0 z-10">
+    <div class="container mx-auto">
+      <h1 class="text-2xl font-bold">AGPCursos</h1>
+      <p class="text-sm opacity-90">Aprende sin distracciones</p>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-white py-12 px-4">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-4">Domina nuevas habilidades sin anuncios</h2>
+      <p class="text-gray-600 mb-6">Cursos de programación, marketing, diseño y más. Videos embebidos sin publicidad.</p>
+      <a href="cursos.html" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition">Ver todos los cursos</a>
+    </div>
+  </section>
+
+  <!-- Categorías destacadas -->
+  <section class="container mx-auto px-4 py-8">
+    <h3 class="text-2xl font-bold mb-6">Categorías populares</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h4 class="font-semibold">Desarrollo</h4>
+        <p class="text-sm text-gray-500">Python, Java, JS</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h4 class="font-semibold">Marketing</h4>
+        <p class="text-sm text-gray-500">SEO, Redes sociales</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h4 class="font-semibold">Productividad</h4>
+        <p class="text-sm text-gray-500">Excel, Google</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h4 class="font-semibold">Diseño</h4>
+        <p class="text-sm text-gray-500">Photoshop, UI/UX</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-6 mt-12">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 AGPCursos - Todos los derechos reservados</p>
+      <p class="text-sm opacity-70">Videos embebidos sin anuncios molestos</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+  <script>
+    // Configuración básica de Plyr
+    const player = new Plyr('#player');
+  </script>
+</body>
+</html>

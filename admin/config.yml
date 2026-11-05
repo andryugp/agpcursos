@@ -1,0 +1,47 @@
+backend:
+  name: github
+  repo: andryugp/agpcursos
+  branch: master
+  # Necesario para OAuth - agrega tu client_id después de crear la OAuth App
+  client_id:YOUR_GITHUB_CLIENT_ID
+
+media_folder: "images"
+public_folder: "/images"
+
+# Configuración del CMS
+collections:
+  - name: "cursos"
+    label: "Cursos"
+    folder: "data"
+    create: false
+    slug: ""
+    
+    # Archivo JSON principal
+    file: "data/cursos.json"
+    label: "Cursos"
+    
+    # Widget para editar el contenido completo del JSON
+    # Decap CMS guardará los cambios en el campo "cursos"
+    fields:
+      - label: "Cursos"
+        name: "cursos"
+        widget: "list"
+        fields:
+          - {label: "ID", name: "id", widget: "string", hint: "curso-001, curso-002, etc."}
+          - {label: "Título", name: "titulo", widget: "string"}
+          - {label: "Descripción", name: "descripcion", widget: "text", required: false}
+          - label: "Categoría"
+            name: "categoria"
+            widget: "select"
+            options: ["Desarrollo", "Negocios", "Finanzas", "Informática", "IA", "Productividad", "Desarrollo Personal", "Diseño", "Marketing", "Salud", "Música", "Enseñanza"]
+          - {label: "Subcategoría", name: "subcategoria", widget: "string", required: false}
+          - label: "Nivel"
+            name: "nivel"
+            widget: "select"
+            options: ["principiante", "intermedio", "avanzado"]
+          - {label: "Duración", name: "duracion", widget: "string", hint: "40 horas"}
+          - {label: "URL del Video (YouTube)", name: "video_url", widget: "string"}
+          - {label: "URL de Fallback (Invidious)", name: "video_fallback", widget: "string", hint: "https://yewtu.be/watch?v=..."}
+          - {label: "Módulo", name: "modulo", widget: "string"}
+          - {label: "Fecha de Publicación", name: "fecha_publicacion", widget: "date", format: "YYYY-MM-DD", required: false}
+          - {label: "Instructor", name: "instructor", widget: "string", required: false}

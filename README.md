@@ -78,3 +78,6 @@ Este proyecto está bajo licencia MIT - libre para uso personal y comercial.
 ## 📧 Contacto
 
 Andrés Ruiz - [@andryugp](https://github.com/andryugp)
+
+<!-- Commit: v2.0 - Configuración Decap CMS con PAT token -->
+<!-- GitHub Actions workflow will inject PAT for CMS authentication -->

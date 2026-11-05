@@ -2,21 +2,20 @@
 .DS_Store
 Thumbs.db
 
-# Archivos de IDE
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 
-# Node.js (si se usara)
+# Build
 node_modules/
-package-lock.json
+dist/
+build/
 
 # Logs
 *.log
 npm-debug.log*
 
-# Temporales
-*.tmp
-*.temp
+# Environment
+.env
+.env.local
+.env.*.local

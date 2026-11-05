@@ -2,7 +2,9 @@ backend:
   name: github
   repo: andryugp/agpcursos
   branch: master
-  token: "YOUR_PAT_TOKEN_HERE"
+  # Token será inyectado automáticamente por GitHub Actions
+  # usando GitHub App credentials
+  token: "${GITHUB_TOKEN}"
 
 media_folder: "images"
 public_folder: "/images"

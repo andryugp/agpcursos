@@ -33,7 +33,7 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
-          permission-string: "repository-content"
+          permission-contents: "write"
           repositories: "agpcursos"
           # Necesitarás crear estos secrets en Settings > Secrets and variables > Actions
 

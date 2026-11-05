@@ -54,4 +54,5 @@ collections:
         name: "categorias"
         widget: "list"
         fields:
+          - {label: "Title", name: "title", widget: "string", required: true}
           - {label: "Nombre", name: "nombre", widget: "string"}

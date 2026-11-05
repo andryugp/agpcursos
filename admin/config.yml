@@ -2,8 +2,11 @@ backend:
   name: github
   repo: andryugp/agpcursos
   branch: master
-  # Necesario para OAuth - agrega tu client_id después de crear la OAuth App
   client_id: Ov23liIGvELSXRwjZvfn
+  
+  # Nota: El client_secret es opcional en Decap CMS modo implícito.
+  # Si GitHub solicita autenticación, agregar el client_secret:
+  # client_secret: "tu_client_secret_aqui"
 
 media_folder: "images"
 public_folder: "/images"

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGPCursos - Cursos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Todos los cursos disponibles sin anuncios">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto">
+      <a href="index.html" class="hover:underline">&larr; Volver a inicio</a>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6">
+    <h1 class="text-3xl font-bold mb-6">Cursos Disponibles</h1>
+    
+    <div id="cursos-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Los cursos se cargan aquí con JavaScript -->
+    </div>
+  </main>
+
+  <script>
+    // Cargar cursos desde el JSON
+    fetch('data/cursos.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('cursos-container');
+        
+        data.cursos.forEach(curso => {
+          const card = document.createElement('div');
+          card.className = 'bg-white rounded-lg shadow-md p-4';
+          card.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">${curso.titulo}</h3>
+            <p class="text-gray-600 text-sm mb-3">${curso.descripcion}</p>
+            <div class="flex items-center justify-between text-xs text-gray-500 mb-3">
+              <span>${curso.categoria}</span>
+              <span>${curso.nivel}</span>
+              <span>${curso.duracion}</span>
+            </div>
+            <button onclick="window.location.href='curso.html?id=${curso.id}'" 
+                    class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded transition">
+              Ver curso
+            </button>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => console.error('Error cargando cursos:', err));
+  </script>
+</body>
+</html>

@@ -4,12 +4,19 @@ backend:
   branch: master
   client_id: Ov23liIGvELSXRwjZvfn
   
-  # Nota: El client_secret es opcional en Decap CMS modo implícito.
-  # Si GitHub solicita autenticación, agregar el client_secret:
-  # client_secret: "tu_client_secret_aqui"
+  # Instrucciones de OAuth para GitHub
+  # 1. Visitar: https://github.com/settings/developers
+  # 2. Seleccionar la OAuth App configurada con Client ID: Ov23liIGvELSXRwjZvfn
+  # 3. Configurar Callback URL: https://andryugp.github.io/agpcursos/admin/
+  # 4. Si es necesario, agregar client_secret debajo de client_id
 
 media_folder: "images"
 public_folder: "/images"
+
+# Configuración específica para GitHub Pages
+config:
+  media_folder: "images"
+  public_folder: "/images"
 
 # Configuración del CMS
 collections:

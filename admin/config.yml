@@ -7,8 +7,8 @@ backend:
 media_folder: "images"
 public_folder: "/images"
 
-# Configuración específica para GitHub Pages
-publish_mode: none
+# Publicación directa (sin editorial workflow)
+# Si necesitas workflow editorial, usa: publish_mode: editorial_workflow
 
 collections:
   - name: "cursos"

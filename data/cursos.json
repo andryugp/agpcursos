@@ -1,64 +1,44 @@
-{
-  "cursos": [
-    {
-      "id": "curso-001",
-      "titulo": "Python desde Cero: De Principiante a Experto",
-      "descripcion": "Aprende Python paso a paso. Desde variables hasta frameworks avanzados de desarrollo web y ciencia de datos.",
-      "categoria": "Desarrollo",
-      "subcategoria": "Programación",
-      "nivel": "principiante",
-      "duracion": "40 horas",
-      "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      "video_fallback": "https://yewtu.be/watch?v=dQw4w9WgXcQ",
-      "modulo": "introduccion",
-      "fecha_publicacion": "2024-01-15",
-      "instructor": "Andrés Ruiz"
-    },
-    {
-      "id": "curso-002",
-      "titulo": "Marketing Digital para Negocios Online",
-      "descripcion": "Domina el marketing digital: SEO, redes sociales, publicidad pagada y estrategias de crecimiento.",
-      "categoria": "Marketing",
-      "subcategoria": "Marketing digital",
-      "nivel": "intermedio",
-      "duracion": "35 horas",
-      "video_url": "https://www.youtube.com/embed/9bZkp7q19f0",
-      "video_fallback": "https://yewtu.be/watch?v=9bZkp7q19f0",
-      "modulo": "fundamentos",
-      "fecha_publicacion": "2024-02-20",
-      "instructor": "María González"
-    },
-    {
-      "id": "curso-003",
-      "titulo": "Excel Avanzado: Fórmulas y Macros",
-      "descripcion": "Domina Excel con funciones avanzadas, tablas dinámicas, macros y programación VBA.",
-      "categoria": "Productividad",
-      "subcategoria": "Microsoft Office",
-      "nivel": "intermedio",
-      "duracion": "25 horas",
-      "video_url": "https://www.youtube.com/embed/3JZ_D3ELwOQ",
-      "video_fallback": "https://yewtu.be/watch?v=3JZ_D3ELwOQ",
-      "modulo": "avanzado",
-      "fecha_publicacion": "2024-03-10",
-      "instructor": "Carlos Pérez"
-    }
-  ],
-  "categorias": [
-    "Desarrollo",
-    "Negocios",
-    "Finanzas y Contabilidad",
-    "Informática y Software",
-    "Inteligencia artificial",
-    "Productividad en la Oficina",
-    "Desarrollo Personal",
-    "Diseño",
-    "Marketing",
-    "Salud y Fitness",
-    "Música",
-    "Enseñanza y Académicas"
-  ],
-  "filtros": {
-    "niveles": ["principiante", "intermedio", "avanzado"],
-    "modulos": ["introduccion", "fundamentos", "intermedio", "avanzado"]
+[
+  {
+    "id": "curso-001",
+    "titulo": "Python desde Cero: De Principiante a Experto",
+    "descripcion": "Aprende Python paso a paso. Desde variables hasta frameworks avanzados de desarrollo web y ciencia de datos.",
+    "categoria": "Desarrollo",
+    "subcategoria": "Programación",
+    "nivel": "principiante",
+    "duracion": "40 horas",
+    "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "video_fallback": "https://yewtu.be/watch?v=dQw4w9WgXcQ",
+    "modulo": "introduccion",
+    "fecha_publicacion": "2024-01-15",
+    "instructor": "Andrés Ruiz"
+  },
+  {
+    "id": "curso-002",
+    "titulo": "Marketing Digital para Negocios Online",
+    "descripcion": "Domina el marketing digital: SEO, redes sociales, publicidad pagada y estrategias de crecimiento.",
+    "categoria": "Marketing",
+    "subcategoria": "Marketing digital",
+    "nivel": "intermedio",
+    "duracion": "35 horas",
+    "video_url": "https://www.youtube.com/embed/9bZkp7q19f0",
+    "video_fallback": "https://yewtu.be/watch?v=9bZkp7q19f0",
+    "modulo": "fundamentos",
+    "fecha_publicacion": "2024-02-20",
+    "instructor": "María González"
+  },
+  {
+    "id": "curso-003",
+    "titulo": "Excel Avanzado: Fórmulas y Macros",
+    "descripcion": "Domina Excel con funciones avanzadas, tablas dinámicas, macros y programación VBA.",
+    "categoria": "Productividad",
+    "subcategoria": "Microsoft Office",
+    "nivel": "intermedio",
+    "duracion": "25 horas",
+    "video_url": "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+    "video_fallback": "https://yewtu.be/watch?v=3JZ_D3ELwOQ",
+    "modulo": "avanzado",
+    "fecha_publicacion": "2024-03-10",
+    "instructor": "Carlos Pérez"
   }
-}
+]

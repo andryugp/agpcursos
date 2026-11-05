@@ -2,7 +2,7 @@ backend:
   name: github
   repo: andryugp/agpcursos
   branch: master
-  token: "__AGPCURSOS_PAT__"
+  token: "YOUR_PAT_TOKEN_HERE"
 
 media_folder: "images"
 public_folder: "/images"
@@ -12,15 +12,11 @@ publish_mode: none
 
 collections:
   - name: "cursos"
-    label: "Cursos y Categorías"
+    label: "Cursos"
     folder: "data"
     create: false
     slug: ""
-    
-    # Archivo JSON principal
-    file: "data/cursos.json"
-    
-    # Widget para editar el contenido completo del JSON
+    file: "cursos.json"
     fields:
       - label: "Cursos"
         name: "cursos"
@@ -32,7 +28,7 @@ collections:
           - label: "Categoría"
             name: "categoria"
             widget: "select"
-            options: ["Desarrollo", "Negocios", "Finanzas", "Informática", "IA", "Productividad", "Desarrollo Personal", "Diseño", "Marketing", "Salud", "Música", "Enseñanza"]
+            options: ["Desarrollo", "Negocios", "Finanzas y Contabilidad", "Informática y Software", "Inteligencia artificial", "Productividad en la Oficina", "Desarrollo Personal", "Diseño", "Marketing", "Salud y Fitness", "Música", "Enseñanza y Académicas"]
           - {label: "Subcategoría", name: "subcategoria", widget: "string", required: false}
           - label: "Nivel"
             name: "nivel"
@@ -44,24 +40,16 @@ collections:
           - {label: "Módulo", name: "modulo", widget: "string"}
           - {label: "Fecha de Publicación", name: "fecha_publicacion", widget: "date", format: "YYYY-MM-DD", required: false}
           - {label: "Instructor", name: "instructor", widget: "string", required: false}
-      
+
+  - name: "categorias"
+    label: "Categorías"
+    folder: "data"
+    create: false
+    slug: ""
+    file: "categorias.json"
+    fields:
       - label: "Categorías"
         name: "categorias"
         widget: "list"
         fields:
           - {label: "Nombre", name: "nombre", widget: "string"}
-      
-      - label: "Filtros"
-        name: "filtros"
-        widget: "object"
-        fields:
-          - label: "Niveles"
-            name: "niveles"
-            widget: "list"
-            fields:
-              - {label: "Nivel", name: "", widget: "string"}
-          - label: "Módulos"
-            name: "modulos"
-            widget: "list"
-            fields:
-              - {label: "Módulo", name: "", widget: "string"}

@@ -20,9 +20,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{steps.deployment.outputs.page_url}}
-    permissions:
-      contents: read
-      secrets: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -32,8 +29,13 @@ jobs:
 
       - name: Inject GitHub PAT token for Decap CMS
         env:
-          AGPCURSOS_PAT: ${{ secrets.AGPCURSOS_PAT }}
-        run: sed -i "s/__AGPCURSOS_PAT__/$AGPCURSOS_PAT/g" admin/config.yml
+          PAT_TOKEN: ${{ secrets.AGPCURSOS_PAT }}
+        run: |
+          if [ -n "$PAT_TOKEN" ]; then
+            sed -i.bak "s/YOUR_PAT_TOKEN_HERE/$PAT_TOKEN/g" admin/config.yml && rm -f admin/config.yml.bak
+          else
+            echo "Warning: AGPCURSOS_PAT secret not found. CMS will not be functional for editing."
+          fi
 
       - name: Setup Pages
         id: setup

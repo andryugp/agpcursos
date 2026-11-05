@@ -9,115 +9,96 @@
 | Videos embebidos | ✅ Configurados | YouTube + fallback Invidious |
 | TailwindCSS | ✅ CDN cargado | Desde CDN |
 | Plyr.io | ✅ CDN cargado | Reproductor accesible |
-| Decap CMS config | ⚠️ Parcial | client_id configurado, client_secret opcional |
+| Decap CMS config | ✅ Configurado | client_id configurado, client_secret opcional |
+| GitHub Actions workflow | ✅ Commitado y push | deploy.yml con permisos pages: write, id-token: write |
 
 ---
 
-## 📋 Archivos Principales
+## 🔧 Configuración Pendiente (Manual)
 
-### admin/config.yml
-- Backend: GitHub OAuth con client_id configurado
-- Colectiones: cursos, categorias, filtros
-- **Nota**: client_secret es opcional en modo implícito
+### Paso 1: Configurar GitHub Pages
+**Ubicación:** GitHub → Settings → Pages
 
-### data/cursos.json
-```json
-{
-  "cursos": [
-    {"id": "curso-001", "titulo": "Python desde Cero", "categoria": "Desarrollo", ...},
-    {"id": "curso-002", "titulo": "Marketing Digital", "categoria": "Marketing", ...},
-    {"id": "curso-003", "titulo": "Excel Avanzado", "categoria": "Productividad", ...}
-  ],
-  "categorias": [...],
-  "filtros": {"niveles": [...], "modulos": [...]}
-}
-```
+**Configuración requerida:**
+1. Source: **Branch `master`**, folder **`/`** (raíz)
+2. Guardar cambios
+3. Esperar a que se genere la URL automáticamente
+
+**URL esperada:** `https://andryugp.github.io/agpcursos/`
 
 ---
 
-## 🔧 Pasos de Verificación Pendientes
+### Paso 2: Verificar Workflow de GitHub Actions
+**Ubicación:** GitHub → Actions → "Deploy to GitHub Pages"
 
-### 1. Verificar GitHub Pages (OBLIGATORIO)
-**Tiempo estimado:** 1-5 minutos
-
-1. Ve a: https://github.com/andryugp/agpcursos/settings/pages
-2. En "Build and deployment":
-   - **Source:** `master` branch
-   - **Folder:** `/ (root)`
-3. URL del sitio: `https://andryugp.github.io/agpcursos/`
-4. **Primer despliegue:** Puede tardar 1-5 minutos
-
-### 2. Probar Panel de Administración
-**URL a probar:** `https://andryugp.github.io/agpcursos/admin/`
-
-Si el panel solicita credenciales:
-- Inicia sesión con tu cuenta de GitHub
-- Si hay error de OAuth, el client_secret puede ser necesario
-
-### 3. Verificar Navegación
-- Home: `https://andryugp.github.io/agpcursos/`
-- Cursos: `https://andryugp.github.io/agpcursos/cursos.html`
-- Detalle curso: `https://andryugp.github.io/agpcursos/curso.html?id=curso-001`
-- Admin: `https://andryugp.github.io/agpcursos/admin/`
+1. Verificar que el workflow se ejecutó correctamente tras el push
+2. Chequear logs del job "Deploy to GitHub Pages"
+3. Confirmar estado "Success"
 
 ---
 
-## 🛠️ Solución a Problemas Comunes
+### Paso 3: Probar el sitio
+Una vez configurado GitHub Pages y completado el workflow:
 
-### Error: "Page build failed"
-- Verifica que `index.html` esté en la raíz
-- Asegúrate de que no hay archivos con extensión incorrecta
-
-### Error: "Authentication failed" en Decap CMS
-- El client_secret NO es obligatorio
-- Si es necesario, agrega a `admin/config.yml`:
-```yaml
-client_secret: "PEGA_AQUI_TU_CLIENT_SECRET"
-```
-
-### Cursos no aparecen
-- Verifica `data/cursos.json` existe en GitHub
-- Reinicia el servidor o espera 2 min
+1. Visitar: `https://andryugp.github.io/agpcursos/`
+2. Verificar:
+   - Página de inicio carga correctamente
+   - Lista de cursos visible
+   - Navegación entre páginas funciona
+   - Videos se reproducen
 
 ---
 
-## 📊 Cronología de Pruebas
+## 🛠️ Archivos Pendientes de Commit
 
-- [ ] Verificar GitHub Pages activo y funcionando
-- [ ] Probar acceso a `/admin/`
-- [ ] Verificar edición de cursos desde el panel
-- [ ] Probar videos en cursos.html
-- [ ] Probar filtro por categoría
-- [ ] Verificar responsive en móvil
-
----
-
-## 🚀 Próximos Pasos
-
-1. **GitHub Pages activo** - Una vez verificado, el sitio está en producción
-2. **Panel de admin funcional** - Puedes añadir/editar cursos fácilmente
-3. **Considerar HTTPS local** - Para desarrollo local, usa `npx serve .`
+| Archivo | Estado | Acción requerida |
+|---------|--------|------------------|
+| `.github/workflows/deploy.yml` | ✅ Commitado | Listo |
+| `.gitignore` | ✅ Commitado | Listo |
+| `PLAN_VERIFICACION.md` | 📝 Actual | Este archivo |
 
 ---
 
-## 📞 Contacto
+## 🔐 Configuración Decap CMS
 
-- GitHub: [@andryugp](https://github.com/andryugp)
+### Requisitos para el panel de administración:
+1. **OAuth App** configurada en GitHub con:
+   - Client ID: `Ov23liIGvELSXRwjZvfn`
+   - Callback URL: `https://andryugp.github.io/agpcursos/admin/`
+
+2. **Permisos necesarios** del OAuth App:
+   - public_repo (para lectura/escritura del repositorio)
+
+3. **Acceso al panel:**
+   - URL: `https://andryugp.github.io/agpcursos/admin/`
+   - Requiere login GitHub
 
 ---
 
-## 📦 Archivos del Proyecto
+## 📋 Checklist de Verificación Final
 
-```
-agpcursos/
-├── admin/
-│   ├── config.yml       # Configuración Decap CMS
-│   └── index.html       # Panel de administración
-├── data/
-│   └── cursos.json      # Base de datos de cursos
-├── index.html           # Página principal
-├── cursos.html          # Lista de cursos
-├── curso.html           # Detalle del curso
-├── PLAN_VERIFICACION.md # Este archivo
-└── README.md            # Documentación
-```
+- [ ] GitHub Pages configurado en Settings → Pages
+- [ ] Branch `master` seleccionada como source
+- [ ] Workflow de GitHub Actions ejecutado exitosamente
+- [ ] URL principal funcionando: `https://andryugp.github.io/agpcursos/`
+- [ ] Panel de administración accesible: `/admin/`
+- [ ] Login GitHub funciona en el panel de administración
+- [ ] Edición de cursos JSON posible desde el panel
+
+---
+
+## 🚨 Notas Importantes
+
+1. **GitHub Pages** debe configurarse **manualmente** desde Settings del repositorio
+2. El primer despliegue puede tardar unos minutos en completarse
+3. El panel de administración Decap CMS requiere autenticación GitHub
+4. Los cambios en `data/cursos.json` se reflejarán inmediatamente en el sitio
+
+---
+
+## 🎯 Próximos Pasos
+
+1. Configurar GitHub Pages manualmente desde Settings
+2. Verificar el despliegue automático
+3. Probar el panel de administración
+4. Documentar resultados
